@@ -1,0 +1,25 @@
+header {
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background-color: #E4717A;
+    display: flex;
+}
+
+header h3 {
+    align-items: center;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+.heading h1 {
+    margin-left: 10px;
+}
+
+.about {
+    margin-left: 1px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
