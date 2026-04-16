@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reign & Teji's Cosmetics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose: {
+              gold: '#B76E79',
+              light: '#F5E6E8',
+              dark: '#8B4A52',
+              cream: '#FFF5F6',
+              blush: '#E8C4C8',
+              deep: '#6B2D35',
+            },
+            champagne: '#F7E7CE',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="font-body bg-rose-cream text-gray-800">
+
+  <!-- Announcement Bar -->
+  <div id="announcement-bar" class="bg-rose-deep text-white text-center py-2 px-4 text-sm font-light tracking-wide relative">
+    ✨ Free shipping on orders over $75 — Use code <span class="font-semibold">REIGN25</span> for 25% off! ✨
+    <button onclick="document.getElementById('announcement-bar').style.display='none'" class="absolute right-4 top-1/2 -translate-y-1/2 hover:opacity-70 transition">
+      <i data-lucide="x" class="w-4 h-4"></i>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 md:h-20">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-gold to-rose-blush flex items-center justify-center">
+            <span class="text-white font-display font-bold text-lg">R</span>
+          </div>
+          <div class="hidden sm:block">
+            <h1 class="font-display text-lg md:text-xl font-bold text-rose-dark leading-tight">Reign & Teji's</h1>
+            <p class="text-[10px] tracking-[0.3em] uppercase text-rose-gold font-medium -mt-0.5">Cosmetics</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#home" class="nav-link text-sm font-medium text-gray-700 hover:text-rose-gold transition">Home</a>
+          <a href="#shop" class="nav-link text-sm font-medium text-gray-700 hover:text-rose-gold transition">Shop</a>
+          <a href="#about" class="nav-link text-sm font-medium text-gray-700 hover:text-rose-gold transition">About</a>
+          <a href="#testimonials" class="nav-link text-sm font-medium text-gray-700 hover:text-rose-gold transition">Reviews</a>
+          <a href="#contact" class="nav-link text-sm font-medium text-gray-700 hover:text-rose-gold transition">Contact</a>
+        </div>
+
+        <!-- Right Icons -->
+        <div class="flex items-center gap-3">
+          <button class="p-2 hover:bg-rose-light rounded-full transition" onclick="toggleSearch()">
+            <i data-lucide="search" class="w-5 h-5 text-gray-600"></i>
+          </button>
+          <button class="p-2 hover:bg-rose-light rounded-full transition relative" onclick="toggleCart()">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-gray-600"></i>
+            <span id="cart-count" class="absolute -top-0.5 -right-0.5 bg-rose-gold text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+          </button>
+          <button class="md:hidden p-2 hover:bg-rose-light rounded-full transition" onclick="toggleMobileMenu()">
+            <i data-lucide="menu" class="w-5 h-5 text-gray-600" id="menu-icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div id="search-bar" class="hidden bg-white border-t px-4 py-4">
+      <div class="max-w-2xl mx-auto relative">
+        <input type="text" placeholder="Search for lipsticks, foundations, skincare..." class="w-full py-3 px-5 pr-12 rounded-full border border-rose-blush focus:outline-none focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20 text-sm" />
+        <i data-lucide="search" class="w-5 h-5 text-rose-gold absolute right-4 top-1/2 -translate-y-1/2"></i>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-4 py-4 space-y-1">
+        <a href="#home" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-rose-light hover:text-rose-gold transition font-medium" onclick="toggleMobileMenu()">Home</a>
+        <a href="#shop" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-rose-light hover:text-rose-gold transition font-medium" onclick="toggleMobileMenu()">Shop</a>
+        <a href="#about" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-rose-light hover:text-rose-gold transition font-medium" onclick="toggleMobileMenu()">About</a>
+        <a href="#testimonials" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-rose-light hover:text-rose-gold transition font-medium" onclick="toggleMobileMenu()">Reviews</a>
+        <a href="#contact" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-rose-light hover:text-rose-gold transition font-medium" onclick="toggleMobileMenu()">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-rose-cream via-white to-champagne/30"></div>
+    <div class="absolute top-20 right-0 w-96 h-96 bg-rose-blush/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-rose-gold/10 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="text-center lg:text-left space-y-6 md:space-y-8">
+          <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-rose-blush/50">
+            <span class="w-2 h-2 rounded-full bg-rose-gold animate-pulse"></span>
+            <span class="text-xs font-medium text-rose-dark tracking-wide">NEW COLLECTION 2025</span>
+          </div>
+          <h2 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-rose-deep leading-tight">
+            Beauty That <br/>
+            <span class="text-rose-gold italic">Reigns</span> Supreme
+          </h2>
+          <p class="text-gray-600 text-base md:text-lg max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">
+            Discover luxury cosmetics crafted for every skin tone. Reign & Teji's brings you premium beauty products that celebrate your unique glow.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#shop" class="group inline-flex items-center justify-center gap-2 bg-rose-gold hover:bg-rose-dark text-white px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg shadow-rose-gold/25 hover:shadow-rose-dark/30 hover:-translate-y-0.5">
+              Shop Now
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#about" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-rose-light text-rose-dark px-8 py-4 rounded-full font-medium transition-all duration-300 border border-rose-blush">
+              Our Story
+            </a>
+          </div>
+          <div class="flex items-center gap-8 justify-center lg:justify-start pt-4">
+            <div class="text-center">
+              <p class="font-display text-2xl font-bold text-rose-dark">500+</p>
+              <p class="text-xs text-gray-500">Products</p>
+            </div>
+            <div class="w-px h-10 bg-rose-blush"></div>
+            <div class="text-center">
+              <p class="font-display text-2xl font-bold text-rose-dark">50K+</p>
+              <p class="text-xs text-gray-500">Happy Clients</p>
+            </div>
+            <div class="w-px h-10 bg-rose-blush"></div>
+            <div class="text-center">
+              <p class="font-display text-2xl font-bold text-rose-dark">4.9★</p>
+              <p class="text-xs text-gray-500">Rating</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative flex justify-center">
+          <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
+            <div class="absolute inset-0 bg-gradient-to-br from-rose-gold/30 to-rose-blush/30 rounded-full animate-pulse-slow"></div>
+            <div class="absolute inset-4 bg-gradient-to-br from-rose-gold/20 to-champagne/30 rounded-full"></div>
+            <img src="http://static.photos/cosmetic/640x360/1" alt="Featured Product" class="relative rounded-3xl shadow-2xl shadow-rose-gold/20 object-cover w-full h-full" />
+            <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float">
+              <div class="w-10 h-10 bg-rose-light rounded-full flex items-center justify-center">
+                <i data-lucide="heart" class="w-5 h-5 text-rose-gold"></i>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-gray-800">Bestseller</p>
+                <p class="text-[10px] text-gray-500">2.3K+ sold</p>
+              </div>
+            </div>
+            <div class="absolute -top-2 -right-2 bg-rose-gold text-white rounded-2xl shadow-xl px-4 py-2 animate-float-delayed">
+              <p class="text-xs font-bold">-25% OFF</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-rose-gold text-sm font-semibold tracking-widest uppercase mb-2">Browse By</p>
+        <h3 class="font-display text-3xl md:text-4xl font-bold text-rose-deep">Shop Categories</h3>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <a href="#shop" class="group relative overflow-hidden rounded-2xl aspect-[3/4] shadow-lg">
+          <img src="http://static.photos/cosmetic/320x240/10" alt="Lips" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-rose-deep/80 via-rose-deep/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <h4 class="font-display text-xl font-bold text-white">Lips</h4>
+            <p class="text-white/70 text-xs mt-1">120+ shades</p>
+          </div>
+        </a>
+        <a href="#shop" class="group relative overflow-hidden rounded-2xl aspect-[3/4] shadow-lg">
+          <img src="http://static.photos/cosmetic/320x240/20" alt="Face" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-rose-deep/80 via-rose-deep/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <h4 class="font-display text-xl font-bold text-white">Face</h4>
+            <p class="text-white/70 text-xs mt-1">Foundations & more</p>
+          </div>
+        </a>
+        <a href="#shop" class="group relative overflow-hidden rounded-2xl aspect-[3/4] shadow-lg">
+          <img src="http://static.photos/cosmetic/320x240/30" alt="Eyes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-rose-deep/80 via-rose-deep/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <h4 class="font-display text-xl font-bold text-white">Eyes</h4>
+            <p class="text-white/70 text-xs mt-1">Palettes & liners</p>
+          </div>
+        </a>
+        <a href="#shop" class="group relative overflow-hidden rounded-2xl aspect-[3/4] shadow-lg">
+          <img src="http://static.photos/cosmetic/320x240/40" alt="Skincare" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-rose-deep/80 via-rose-deep/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <h4 class="font-display text-xl font-bold text-white">Skincare</h4>
+            <p class="text-white/70 text-xs mt-1">Glow from within</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="shop" class="py-16 md:py-24 bg-rose-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+        <div>
+          <p class="text-rose-gold text-sm font-semibold tracking-widest uppercase mb-2">Our Collection</p>
+          <h3 class="font-display text-3xl md:text-4xl font-bold text-rose-deep">Bestselling Products</h3>
+        </div>
+        <div class="flex gap-2 mt-6 md:mt-0" id="filter-buttons">
+          <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="all">All</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="lips">Lips</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="face">Face</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="eyes">Eyes</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="skin">Skin</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" id="products-grid">
+        <!-- Products will be injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 md:py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <div class="grid grid-cols-2 gap-4">
+            <img src="http://static.photos/cosmetic/320x240/50" alt="About 1" class="rounded-2xl shadow-lg w-full h-48 md:h-64 object-cover" />
+            <img src="http://static.photos/cosmetic/320x240/60" alt="About 2" class="rounded-2xl shadow-lg w-full h-48 md:h-64 object-cover mt-8" />
+          </div>
+          <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-rose-gold text-white rounded-2xl shadow-xl px-8 py-4 text-center">
+            <p class="font-display text-2xl font-bold">Since 2019</p>
+            <p class="text-xs text-white/80">Crafting Beauty</p>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <p class="text-rose-gold text-sm font-semibold tracking-widest uppercase">Our Story</p>
+          <h3 class="font-display text-3xl md:text-4xl font-bold text-rose-deep">Where Beauty Meets Passion</h3>
+          <p class="text-gray-600 font-light leading-relaxed">
+            Reign & Teji's Cosmetics was born from a shared passion between two sisters who believed that luxury beauty should be accessible to everyone. Every product is thoughtfully formulated with premium ingredients and packaged with love.
+          </p>
+          <p class="text-gray-600 font-light leading-relaxed">
+            From our iconic lip collections to our skincare essentials, we celebrate diversity and empower you to express your unique beauty. Cruelty-free, vegan-friendly, and made for every skin tone.
+          </p>
+          <div class="grid grid-cols-2 gap-6 pt-4">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-rose-light rounded-xl flex items-center justify-center shrink-0">
+                <i data-lucide="leaf" class="w-5 h-5 text-rose-gold"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-gray-800">Cruelty Free</p>
+                <p class="text-xs text-gray-500">Never tested on animals</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-rose-light rounded-xl flex items-center justify-center shrink-0">
+                <i data-lucide="sparkles" class="w-5 h-5 text-rose-gold"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-gray-800">Premium Quality</p>
+                <p class="text-xs text-gray-500">Best ingredients only</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-rose-light rounded-xl flex items-center justify-center shrink-0">
+                <i data-lucide="heart-handshake" class="w-5 h-5 text-rose-gold"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-gray-800">Inclusive Beauty</p>
+                <p class="text-xs text-gray-500">50+ shade range</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-rose-light rounded-xl flex items-center justify-center shrink-0">
+                <i data-lucide="recycle" class="w-5 h-5 text-rose-gold"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-gray-800">Eco-Friendly</p>
+                <p class="text-xs text-gray-500">Sustainable packaging</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-16 md:py-24 bg-gradient-to-br from-rose-deep via-rose-dark to-rose-gold relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-40 h-40 border border-white rounded-full"></div>
+      <div class="absolute bottom-20 right-20 w-60 h-60 border border-white rounded-full"></div>
+      <div class="absolute top-1/2 left-1/3 w-20 h-20 border border-white rounded-full"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-rose-blush text-sm font-semibold tracking-widest uppercase mb-2">Testimonials</p>
+        <h3 class="font-display text-3xl md:text-4xl font-bold text-white">What Our Queens Say</h3>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6" id="testimonials-grid">
+        <!-- Testimonials injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-gradient-to-br from-rose-light via-white to-champagne/20 rounded-3xl p-8 md:p-12 shadow-xl border border-rose-blush/30">
+        <div class="w-16 h-16 bg-rose-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i data-lucide="mail" class="w-8 h-8 text-rose-gold"></i>
+        </div>
+        <h3 class="font-display text-2xl md:text-3xl font-bold text-rose-deep mb-3">Join the Reign Family</h3>
+        <p class="text-gray-500 font-light max-w-md mx-auto mb-8">Subscribe for exclusive deals, early access to new launches, and beauty tips delivered straight to your inbox.</p>
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+          <input type="email" placeholder="Enter your email address" required class="flex-1 px-6 py-3.5 rounded-full border border-rose-blush focus:outline-none focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20 text-sm" />
+          <button type="submit" class="bg-rose-gold hover:bg-rose-dark text-white px-8 py-3.5 rounded-full font-medium transition-all duration-300 shadow-lg shadow-rose-gold/25 text-sm whitespace-nowrap">
+            Subscribe ✨
+          </button>
+        </form>
+        <p id="newsletter-success" class="hidden mt-4 text-sm text-green-600 font-medium">🎉 Welcome to the family! Check your inbox for a surprise.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram / Social -->
+  <section class="py-16 md:py-20 bg-rose-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-rose-gold text-sm font-semibold tracking-widest uppercase mb-2">@ReignAndTejis</p>
+        <h3 class="font-display text-3xl md:text-4xl font-bold text-rose-deep">Follow Our Glow</h3>
+      </div>
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
+        <a href="#" class="group relative aspect-square overflow-hidden rounded-xl">
+          <img src="http://static.photos/cosmetic/200x200/101" alt="Instagram" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-rose-gold/0 group-hover:bg-rose-gold/30 transition-all duration-300 flex items-center justify-center">
+            <i data-lucide="instagram" class="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          </div>
+        </a>
+        <a href="#" class="group relative aspect-square overflow-hidden rounded-xl">
+          <img src="http://static.photos/cosmetic/200x200/102" alt="Instagram" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-rose-gold/0 group-hover:bg-rose-gold/30 transition-all duration-300 flex items-center justify-center">
+            <i data-lucide="instagram" class="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          </div>
+        </a>
+        <a href="#" class="group relative aspect-square overflow-hidden rounded-xl">
+          <img src="http://static.photos/cosmetic/200x200/103" alt="Instagram" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-rose-gold/0 group-hover:bg-rose-gold/30 transition-all duration-300 flex items-center justify-center">
+            <i data-lucide="instagram" class="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          </div>
+        </a>
+        <a href="#" class="group relative aspect-square overflow-hidden rounded-xl">
+          <img src="http://static.photos/cosmetic/200x200/104" alt="Instagram" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-rose-gold/0 group-hover:bg-rose-gold/30 transition-all duration-300 flex items-center justify-center">
+            <i data-lucide="instagram" class="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          </div>
+        </a>
+        <a href="#" class="group relative aspect-square overflow-hidden rounded-xl">
+          <img src="http://static.photos/cosmetic/200x200/105" alt="Instagram" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-rose-gold/0 group-hover:bg-rose-gold/30 transition-all duration-300 flex items-center justify-center">
+            <i data-lucide="instagram" class="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          </div>
+        </a>
+        <a href="#" class="group relative aspect-square overflow-hidden rounded-xl">
+          <img src="http://static.photos/cosmetic/200x200/106" alt="Instagram" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-rose-gold/0 group-hover:bg-rose-gold/30 transition-all duration-300 flex items-center justify-center">
+            <i data-lucide="instagram" class="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-rose-deep text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="col-span-2 md:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-full bg-rose-gold flex items-center justify-center">
+              <span class="text-white font-display font-bold text-lg">R</span>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-bold leading-tight">Reign & Teji's</h4>
+              <p class="text-[10px] tracking-[0.3em] uppercase text-rose-blush">Cosmetics</p>
+            </div>
+          </div>
+          <p class="text-white/60 text-sm font-light leading-relaxed mb-4">Empowering beauty, one product at a time. Luxury cosmetics for every queen.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-rose-gold rounded-full flex items-center justify-center transition">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-rose-gold rounded-full flex items-center justify-center transition">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-rose-gold rounded-full flex items-center justify-center transition">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-rose-gold rounded-full flex items-center justify-center transition">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm mb-4 text-rose-blush">Shop</h5>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Lipsticks</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Foundations</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Eye Palettes</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Skincare</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Gift Sets</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm mb-4 text-rose-blush">Company</h5>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">About Us</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Careers</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Press</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Blog</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Affiliates</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm mb-4 text-rose-blush">Support</h5>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Help Center</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Shipping Info</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Returns</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Track Order</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white text-sm transition">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/40 text-xs">© 2025 Reign & Teji's Cosmetics. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-white/40 hover:text-white text-xs transition">Privacy Policy</a>
+          <a href="#" class="text-white/40 hover:text-white text-xs transition">Terms of Service</a>
+          <a href="#" class="text-white/40 hover:text-white text-xs transition">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-50 hidden opacity-0 transition-opacity duration-300" onclick="toggleCart()"></div>
+  <div id="cart-sidebar" class="fixed top-0 right-0 w-full max-w-md h-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300">
+    <div class="flex flex-col h-full">
+      <div class="flex items-center justify-between p-6 border-b">
+        <h4 class="font-display text-xl font-bold text-rose-deep">Your Bag</h4>
+        <button onclick="toggleCart()" class="p-2 hover:bg-rose-light rounded-full transition">
+          <i data-lucide="x" class="w-5 h-5 text-gray-600"></i>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cart-items">
+        <div class="flex gap-4 items-center">
+          <img src="http://static.photos/cosmetic/200x200/70" alt="Product" class="w-20 h-20 rounded-xl object-cover" />
+          <div class="flex-1">
+            <p class="font-medium text-sm text-gray-800">Velvet Matte Lipstick</p>
+            <p class="text-xs text-gray-500">Shade: Reign Red</p>
+            <div class="flex items-center gap-3 mt-2">
+              <div class="flex items-center border rounded-full">
+                <button class="px-2.5 py-0.5 text-sm text-gray-500 hover:text-rose-gold">−</button>
+                <span class="text-sm font-medium px-1">1</span>
+                <button class="px-2.5 py-0.5 text-sm text-gray-500 hover:text-rose-gold">+</button>
+              </div>
+              <p class="text-sm font-semibold text-rose-gold">$24.00</p>
+            </div>
+          </div>
+          <button class="text-gray-400 hover:text-red-500 transition">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div class="flex gap-4 items-center">
+          <img src="http://static.photos/cosmetic/200x200/80" alt="Product" class="w-20 h-20 rounded-xl object-cover" />
+          <div class="flex-1">
+            <p class="font-medium text-sm text-gray-800">Glow Foundation</p>
+            <p class="text-xs text-gray-500">Shade: Warm Honey</p>
+            <div class="flex items-center gap-3 mt-2">
+              <div class="flex items-center border rounded-full">
+                <button class="px-2.5 py-0.5 text-sm text-gray-500 hover:text-rose-gold">−</button>
+                <span class="text-sm font-medium px-1">1</span>
+                <button class="px-2.5 py-0.5 text-sm text-gray-500 hover:text-rose-gold">+</button>
+              </div>
+              <p class="text-sm font-semibold text-rose-gold">$38.00</p>
+            </div>
+          </div>
+          <button class="text-gray-400 hover:text-red-500 transition">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div class="flex gap-4 items-center">
+          <img src="http://static.photos/cosmetic/200x200/90" alt="Product" class="w-20 h-20 rounded-xl object-cover" />
+          <div class="flex-1">
+            <p class="font-medium text-sm text-gray-800">Rose Eyeshadow Palette</p>
+            <p class="text-xs text-gray-500">12 Shades</p>
+            <div class="flex items-center gap-3 mt-2">
+              <div class="flex items-center border rounded-full">
+                <button class="px-2.5 py-0.5 text-sm text-gray-500 hover:text-rose-gold">−</button>
+                <span class="text-sm font-medium px-1">1</span>
+                <button class="px-2.5 py-0.5 text-sm text-gray-500 hover:text-rose-gold">+</button>
+              </div>
+              <p class="text-sm font-semibold text-rose-gold">$45.00</p>
+            </div>
+          </div>
+          <button class="text-gray-400 hover:text-red-500 transition">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+      <div class="border-t p-6 space-y-4">
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-500">Subtotal</span>
+          <span class="font-semibold text-rose-deep">$107.00</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-500">Shipping</span>
+          <span class="text-sm text-green-600 font-medium">FREE</span>
+        </div>
+        <div class="border-t pt-3 flex justify-between items-center">
+          <span class="font-semibold text-rose-deep">Total</span>
+          <span class="font-display text-xl font-bold text-rose-deep">$107.00</span>
+        </div>
+        <button class="w-full bg-rose-gold hover:bg-rose-dark text-white py-3.5 rounded-full font-medium transition-all duration-300 shadow-lg shadow-rose-gold/25">
+          Checkout 💕
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 w-12 h-12 bg-rose-gold hover:bg-rose-dark text-white rounded-full shadow-lg shadow-rose-gold/30 flex items-center justify-center transition-all duration-300 opacity-0 translate-y-4 z-40">
+    <i data-lucide="chevron-up" class="w-5 h-5"></i>
+  </button>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js"></script>
+</body>
+</html>
